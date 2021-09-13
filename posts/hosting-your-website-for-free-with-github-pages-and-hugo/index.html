@@ -1,0 +1,480 @@
+<!doctype html><html lang=en-us>
+<head>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<script type=text/javascript src=https://latest.cactus.chat/cactus.js></script>
+<link rel=stylesheet href=https://latest.cactus.chat/style.css type=text/css>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<title> Hosting Your Website For Free With GitHub Pages and Hugo | Jerry's Coding Blog</title>
+<link rel=canonical href=https://code.jerry.blog/posts/hosting-your-website-for-free-with-github-pages-and-hugo/>
+<meta name=description content="I'm a software engineer by trade. I'll write about programming topics, such as data structures, algorithms, programming tutorials, and career tips. I'm a huge fan of AWS and have 2 certifications so far (I'm going for all 10!).">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="all,follow">
+<meta name=googlebot content="index,follow,snippet,archive">
+<meta property="og:title" content="Hosting Your Website For Free With GitHub Pages and Hugo">
+<meta property="og:description" content="I can&rsquo;t believe I didn&rsquo;t discover this secret until recently. Apparently it&rsquo;s possible to host a website entirely for free even with a custom domain! The only thing you&rsquo;ll need to pay for is your custom domain name.
+Firstly, I&rsquo;ll give a brief overview of how websites work. Then, I&rsquo;ll provide a step-by-step tutorial on how to achieve free hosting. Skip down to The Actual Tutorial if you already have some background on how websites work.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://code.jerry.blog/posts/hosting-your-website-for-free-with-github-pages-and-hugo/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-09-12T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-09-12T00:00:00+00:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Hosting Your Website For Free With GitHub Pages and Hugo">
+<meta name=twitter:description content="I can&rsquo;t believe I didn&rsquo;t discover this secret until recently. Apparently it&rsquo;s possible to host a website entirely for free even with a custom domain! The only thing you&rsquo;ll need to pay for is your custom domain name.
+Firstly, I&rsquo;ll give a brief overview of how websites work. Then, I&rsquo;ll provide a step-by-step tutorial on how to achieve free hosting. Skip down to The Actual Tutorial if you already have some background on how websites work.">
+<link rel=stylesheet href=https://code.jerry.blog/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script>
+<script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]-->
+<link rel=icon type=image/png href=https://code.jerry.blog/images/favicon.ico>
+</head>
+<body class="max-width mx-auto px3 ltr">
+<div class="content index py4">
+<header id=header>
+<a href=https://code.jerry.blog>
+<div id=logo style=background-image:url(https://code.jerry.blog/images/logo.png)></div>
+<div id=title>
+<h1>Jerry's Coding Blog</h1>
+</div>
+</a>
+<div id=nav>
+<ul>
+<li class=icon>
+<a href=# aria-label=Menu><i class="fas fa-bars fa-2x" aria-hidden=true></i></a>
+</li>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writings</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</div>
+</header>
+<section id=about>
+I&rsquo;m a software engineer by trade. I&rsquo;ll write about programming topics, such as data structures, algorithms, programming tutorials, and career tips. I&rsquo;m a huge fan of AWS and have 2 certifications so far (I&rsquo;m going for all 10!).
+<p>Find me on
+<a class=icon target=_blank rel=noopener href=https://github.com/JerryJZhang aria-label=github>
+<i class="fab fa-github" aria-hidden=true></i>
+</a>
+,
+<a class=icon target=_blank rel=noopener href=https://www.linkedin.com/in/jerryjiaruizhang/ aria-label=linkedin>
+<i class="fab fa-linkedin" aria-hidden=true></i>
+</a>
+and
+<a class=icon target=_blank rel=noopener href=mailto:jerry@jerry.blog aria-label=Email>
+<i class="fas fa-envelope" aria-hidden=true></i>
+</a>
+.
+</p>
+</section>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<header>
+<h1 class=posttitle itemprop="name headline">
+Hosting Your Website For Free With GitHub Pages and Hugo
+</h1>
+<div class=meta>
+<div class=postdate>
+<time datetime="2021-09-12 00:00:00 +0000 UTC" itemprop=datePublished>2021-09-12</time>
+</div>
+<div class=article-read-time>
+<i class="far fa-clock"></i>
+12 minute read
+</div>
+<div class=article-category>
+<i class="fas fa-archive"></i>
+<a class=category-link href=/categories/tutorial>tutorial</a>
+</div>
+<div class=article-tag>
+<i class="fas fa-tag"></i>
+<a class=tag-link href=/tags/hugo rel=tag>hugo</a>
+,
+<a class=tag-link href=/tags/tutorial rel=tag>tutorial</a>
+,
+<a class=tag-link href=/tags/github-pages rel=tag>github-pages</a>
+</div>
+</div>
+</header>
+<div class=content itemprop=articleBody>
+<p>I can&rsquo;t believe I didn&rsquo;t discover this secret until recently. Apparently it&rsquo;s possible to host a website entirely for free even with a custom domain! The only thing you&rsquo;ll need to pay for is your custom domain name.</p>
+<p>Firstly, I&rsquo;ll give a brief overview of how websites work. Then, I&rsquo;ll provide a step-by-step tutorial on how to achieve free hosting. Skip down to <a href=#actual-tutorial>The Actual Tutorial</a> if you already have some background on how websites work.</p>
+<h2 id=a-_refresher_-on-how-the-browser-serves-websites>A <em>Refresher</em> On How The Browser Serves Websites</h2>
+<p>(Did you get that bad pun? <strong>Refresh</strong> your browser if you didn&rsquo;t.)</p>
+<p>When you type in a domain name into your web browser, the web browser does a bunch of things under-the-hood to fulfill your request. The domain name is resolved into an IP address via DNS, the IP address eventually leads us to a server, the browser verifies the certificates sent over by the server, and finally the server gives us a file which the browser renders into the page that we see.</p>
+<p>If you&rsquo;re curious on all the juicy details, go into your browser tools (inspect), refresh your page, and watch all the magic happen:</p>
+<p><img src=browser-under-the-hood.gif alt></p>
+<h2 id=its-technically-one-file-but>It&rsquo;s Technically One File, But&mldr;</h2>
+<p>Nobody writes their entire website in one file anymore. Each line you see in the GIF above is an additional file or request.</p>
+<p>But we have to start somewhere.</p>
+<p>The first file we get back from the server will be an <code>index.html</code> file, and this <code>index.html</code> file will contain a bunch of references to other files, such as other HTML, CSS, JS files, and image files too. The browser will continue processing each of these files it got back, taking note of any additional files that it needs and fetching those too. It will continue this process until every line of code has been rendered and there are no more additional files to fetch. All the files that the browser fetched are &ldquo;static files&rdquo; which the browser needs in order to render the page.</p>
+<p>Every time you type a website into your browser, all these things happen under the hood to deliver us that final page that we see. Think of it like ordering from a restaurant: you order one dish, but there&rsquo;s a bunch of things happening behind the scenes (the chefs cooking in the kitchen, the grocery shopping that happened beforehand, etc.) before your dish is served to you.</p>
+<p>The browser doesn&rsquo;t care how such &ldquo;static files&rdquo; are prepared for us - it just cares that it gets the &ldquo;static files&rdquo;. There are two types of preparation: <strong>dynamic sites</strong> and <strong>static sites</strong>.</p>
+<h2 id=whats-a-dynamic-site>What&rsquo;s a Dynamic Site?</h2>
+<p>Content Management Systems (CMS) like Wordpress, Drupal, Joomla, or Ghost all dynamically generate the site before returning the HTML/CSS/JS files to the web browser. They do it at runtime, which means that when they receive a browser request, they will generate the HTML/CSS/JS files on the spot and then return it to the browser. Here&rsquo;s a diagram of how a dynamic site works:</p>
+<p><img src=dynamic-site.png alt></p>
+<p>Think of dynamic sites as <strong>lazy</strong> - they will <strong>procrastinate</strong> until the very last moment. Step 2 is where the server is scrambling to generate the HTML/CSS/JS files that it doesn&rsquo;t yet have.</p>
+<p><img src=procrastination.gif alt></p>
+<p>Such server-side rendering or dynamic sites is how the old web is run. Before the use of Javascript was widespread, the easiest way to provide users with dynamic functionality in the browser was for the server to render different HTML/CSS back to the user. Now, Javascript is so powerful that it can single-handedly power apps on the web (single page applications). Which leads us to&mldr;</p>
+<h2 id=whats-a-static-site>What&rsquo;s a Static Site?</h2>
+<p>Static sites will give back the very same HTML/CSS/JS files every time. It doesn&rsquo;t change - it&rsquo;s static. Here&rsquo;s a diagram of how a static site works:</p>
+<p><img src=static-site.png alt></p>
+<p>Notice that there&rsquo;s no need for the server to generate the HTML/CSS/JS files on the spot. That&rsquo;s because the files have already been prepared. Think of static sites as <strong>proactive</strong> - they prepared ahead of time and so they don&rsquo;t need to scramble.</p>
+<p><img src=be-prepared.gif alt></p>
+<h2 id=dynamic-sites-vs-static-sites>Dynamic Sites vs Static Sites</h2>
+<p>Here are some downsides to dynamic sites:</p>
+<ul>
+<li>Dynamic sites are slower than static sites because the server needs to do extra work to generate the HTML/CSS/JS files before it gives it back to the browser.</li>
+<li>Dynamic sites require more processing power because they need to do extra work to generate the HTML/CSS/JS files before giving it back to the browser.</li>
+<li>Dynamic sites typically run on a content-management system and have logins and databases, which are susceptible to being hacked.</li>
+</ul>
+<p>In contrast, static sites don&rsquo;t need to worry about slowness or extra power because the HTML/CSS/JS files stay the same. They are static. There&rsquo;s no logins and no databases, and therefore there&rsquo;s nothing to hack.</p>
+<p>By now, I hope you&rsquo;re convinced that static-sites are the way to go. So, how do we create a static site?</p>
+<h2 id=static-site-generators>Static-Site Generators!</h2>
+<p>Okay, you can technically go and code your raw HTML/CSS/JS code from scratch. But that would be horribly inefficient, not to mention error-prone. Enter static-site generators! You get all the benefits of a CMS along with the speed and security.</p>
+<p>Static-site generators generate all the contents required for a static site. This includes all the HTML/CSS/JS files and any assets like images.</p>
+<p>The static-site generator works similarly to a dynamic-site except that the static-site generator will generate all the files offline, and we can take those files and upload them to a web server. This is in contrast to dynamic sites, which will generate these files on the spot.</p>
+<p>This tutorial uses <code>hugo</code> as our static-site generator, but there are plenty of other options too, like <code>jekyll</code>.</p>
+<h1 id=actual-tutorial>The Actual Tutorial</h1>
+<p>Now that you have a solid understanding of how websites work, we can start creating one! This tutorial uses <code>macOS</code> in the examples, but the instructions should be similar for other OSes. We will use the tool <code>hugo</code> as our static-site generator and <code>GitHub Pages</code> to host our pages for free.</p>
+<h2 id=hugo>Creating a Skeleton Website With Hugo</h2>
+<p>We will start by installing hugo and quickly setting up a skeleton static website. You can refer <a href=https://gohugo.io/getting-started/quick-start/>here</a> for the official Hugo tutorial. I&rsquo;ve listed the steps below for convenience:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span style=color:#6272a4># install hugo</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span>brew install hugo
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span style=color:#6272a4># create new site</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span>hugo new site mysite
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span style=color:#6272a4># add a theme</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span style=color:#8be9fd;font-style:italic>cd</span> mysite
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span>git init
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span>git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span style=color:#8be9fd;font-style:italic>echo</span> <span style=color:#8be9fd;font-style:italic>theme</span> <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>\&#34;</span>ananke<span style=color:#f1fa8c>\&#34;</span> &gt;&gt; config.toml
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span style=color:#6272a4># add a post</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span>hugo new posts/my-first-post.md
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span><span style=color:#6272a4># start the hugo server</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span>hugo server -D
+</code></pre></div><p>Navigate your browser to <a href=http://localhost:1313>http://localhost:1313</a> and you should see your skeleton site.</p>
+<p>If you don&rsquo;t like this theme, simply browse <a href=https://themes.gohugo.io/>the library of themes</a> and find one you like to use. I also encourage you to check out the <a href=https://gohugo.io/documentation/>hugo documentation</a> to make further improvements to your site.</p>
+<h2 id=github-pages-setup>GitHub Pages Setup</h2>
+<p>Now it&rsquo;s time to setup our GitHub Pages. You can always refer to the <a href=https://docs.github.com/en/pages>official GitHub Pages documentation</a>, but it&rsquo;s a bit dense and requires you to put the pieces together. That&rsquo;s why I wrote this guide!</p>
+<h3 id=0-some-background>0. Some Background</h3>
+<p>There are 3 types of GitHub Pages sites: user, organization, and project.</p>
+<table>
+<thead>
+<tr>
+<th>Pages Type</th>
+<th>Repository Name</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User</td>
+<td>&lt;username>.github.io</td>
+<td>http(s)://&lt;username>.github.io</td>
+</tr>
+<tr>
+<td>Organization</td>
+<td>&lt;organization>.github.io</td>
+<td>http(s)://&lt;organization>.github.io</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>&lt;repository></td>
+<td>http(s)://&lt;username>.github.io/&lt;repository> or http(s)://&lt;organization>.github.io/&lt;repository></td>
+</tr>
+</tbody>
+</table>
+<p>Each user or organization can only have one main site, but each user or organization can have an unlimited number of project sites. However, each project site is really just a sub-page of your user or organization&rsquo;s main site. Therefore, we want to create a main site.</p>
+<p>In my case, I wanted to host multiple sites with different domains, so I got around this by creating multiple organizations that are owned by my account. If you only need one site, then you can just stick with your user&rsquo;s Pages type.</p>
+<p>Additionally, for the GitHub free tier, if we want to use GitHub Pages, we must set the repository that contains the generated static site as public. I didn&rsquo;t want to expose my pre-processed files, so I will be creating a private repo for my pre-processed files and a public repo for my post-processed files.</p>
+<h3 id=1-create-a-github-organization-optional>1. Create a GitHub Organization (Optional)</h3>
+<p>Again, this step is only for those who want to host multiple sites with GitHub Pages. On the top right next to your profile icon, click the dropdown and click &ldquo;Your organizations&rdquo;.</p>
+<p><img src=gh-pages-1a.png alt></p>
+<p>Then click &ldquo;New organization&rdquo;, and choose &ldquo;Create a free organization&rdquo;. You should be greeted with this screen:</p>
+<p><img src=gh-pages-1b.png alt></p>
+<p>Fill in the fields as appropriate and beat the captcha.</p>
+<h3 id=2-create-a-private-repository-for-the-hugo-source-files>2. Create a Private Repository for the Hugo Source Files</h3>
+<p>Now we need to create a private repository in GitHub and link it to the local git repository we created in the <a href=#hugo>hugo section</a>. We will be committing to this repo every time we update our website.</p>
+<p>On the GitHub home page at the top left, click on &ldquo;New&rdquo;:</p>
+<p><img src=gh-pages-2a.png alt></p>
+<p>You should be greeted with this screen:</p>
+<p><img src=gh-pages-2b.png alt></p>
+<p>Fill in the fields as appropriate, and follow the instructions to link your local repo to your remote repo.</p>
+<h3 id=3-create-a-public-repository-for-the-generated-static-files>3. Create a Public Repository for the Generated Static Files</h3>
+<p>Now we need to create a public repository in GitHub that contains the post-processed files. This is where the static files to our website will live. We won&rsquo;t be committing to this repo - instead, later we will setup a <a href=#github-action>GitHub Action</a> to do this on our behalf everytime we commit a change to the private repo.</p>
+<p>If you&rsquo;re pursuing the path of using your user account, simply create a new repo. If you&rsquo;re pursuing the path of using an organizational account, navigate to the organization first and then create a new repo. Either way, you should be greeted with the following:</p>
+<p><img src=gh-pages-3a.png alt></p>
+<p>For the &ldquo;Repository name&rdquo; part, you must use the format <code>&lt;username>.github.io</code> or <code>&lt;organization>.github.io</code>. This is critical for GitHub Pages to work! (I&rsquo;ve already done this step, which is why it&rsquo;s showing red for me.)</p>
+<h3 id=4-give-permissions-for-private-repo-to-commit-to-public-repo>4. Give Permissions for Private Repo to Commit to Public Repo</h3>
+<p>Next, we&rsquo;ll need to generate a private-public key-pair that will act as a deploy key. Full instructions <a href=https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-create-ssh-deploy-key>here</a>, but I&rsquo;m reproducing here for convenience:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span>ssh-keygen -t rsa -b <span style=color:#bd93f9>4096</span> -C <span style=color:#f1fa8c>&#34;</span><span style=color:#ff79c6>$(</span>git config user.email<span style=color:#ff79c6>)</span><span style=color:#f1fa8c>&#34;</span> -f gh-pages -N <span style=color:#f1fa8c>&#34;&#34;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span style=color:#6272a4># You will get 2 files:</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span style=color:#6272a4>#   gh-pages.pub (public key)</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span style=color:#6272a4>#   gh-pages     (private key)</span>
+</code></pre></div><p>The public key goes to the private repo. The private key goes to the public repo.</p>
+<p><strong><em>Re-read that just in case you didn&rsquo;t get it.</em></strong> It&rsquo;s easy to make a mistake here especially because both steps look almost the same, so be extra careful. I&rsquo;ll provide all screenshots just to make sure you&rsquo;ll get it right.</p>
+<p>Let&rsquo;s start with adding the <strong>public</strong> key to the <strong>private</strong> repo:</p>
+<ol>
+<li>Navigate to your private repo, and click on &ldquo;Settings&rdquo;. <img src=gh-pages-4a.png alt></li>
+<li>Click on &ldquo;Secrets&rdquo;. <img src=gh-pages-4b.png alt></li>
+<li>Click on &ldquo;New repository secret&rdquo;. <img src=gh-pages-4c.png alt></li>
+<li>Finally, add your <strong>public</strong> key, and be sure to check the box &ldquo;Allow write access&rdquo;. <img src=gh-pages-4d.png alt></li>
+</ol>
+<p>Let&rsquo;s then add the <strong>private</strong> key to the <strong>public</strong> repo:</p>
+<ol>
+<li>Navigate to your public repo, and click on &ldquo;Settings.&rdquo; <img src=gh-pages-4e.png alt></li>
+<li>Click on &ldquo;Deploy keys&rdquo;. <img src=gh-pages-4f.png alt></li>
+<li>Click on &ldquo;Add deploy key&rdquo;. <img src=gh-pages-4g.png alt></li>
+<li>Finally, add your <strong>private</strong> key. <img src=gh-pages-4h.png alt></li>
+</ol>
+<p>After the next step, this will allow our private repo to make commits to the public repo. This allows us to keep our pre-processed files private.</p>
+<h3 id=github-action>5. Setup GitHub Action</h3>
+<p>Now it&rsquo;s time to setup some automation. We want it such that every time we commit a change to our private repo, the website will automatically be updated. We can leverage <code>GitHub Actions</code> to help us here.</p>
+<p>To add a new GitHub Action to your private repo, simply add the following file to your private repo:</p>
+<p><code>.github/workflows/github-pages.yml</code></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span style=color:#ff79c6>name</span>: github pages
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span style=color:#ff79c6>on</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span>  <span style=color:#ff79c6>push</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span>    <span style=color:#ff79c6>branches</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span>      - main  <span style=color:#6272a4># Set a branch to deploy</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span>  <span style=color:#ff79c6>pull_request</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span style=color:#ff79c6>jobs</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span>  <span style=color:#ff79c6>deploy</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span>    <span style=color:#ff79c6>runs-on</span>: ubuntu-20.04
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span>    <span style=color:#ff79c6>steps</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span>      - <span style=color:#ff79c6>uses</span>: actions/checkout@v2
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span>        <span style=color:#ff79c6>with</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span>          <span style=color:#ff79c6>submodules</span>: <span style=color:#ff79c6>true</span>  <span style=color:#6272a4># Fetch Hugo themes (true OR recursive)</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span>          <span style=color:#ff79c6>fetch-depth</span>: <span style=color:#bd93f9>0</span>    <span style=color:#6272a4># Fetch all history for .GitInfo and .Lastmod</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span>      - <span style=color:#ff79c6>name</span>: Setup Hugo
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19</span>        <span style=color:#ff79c6>uses</span>: peaceiris/actions-hugo@v2
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20</span>        <span style=color:#ff79c6>with</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21</span>          <span style=color:#ff79c6>hugo-version</span>: <span style=color:#f1fa8c>&#39;0.88.0&#39;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22</span>          <span style=color:#ff79c6>extended</span>: <span style=color:#ff79c6>true</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23</span>      
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24</span>      - <span style=color:#ff79c6>name</span>: Clean
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25</span>        <span style=color:#ff79c6>run</span>: rm -rf ./public
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27</span>      - <span style=color:#ff79c6>name</span>: Build
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28</span>        <span style=color:#ff79c6>run</span>: hugo --minify
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30</span>      - <span style=color:#ff79c6>name</span>: Deploy
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31</span>        <span style=color:#ff79c6>uses</span>: peaceiris/actions-gh-pages@v3
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32</span>        <span style=color:#ff79c6>if</span>: ${{ github.ref == &#39;refs/heads/main&#39; }}
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33</span>        <span style=color:#ff79c6>with</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">34</span>          <span style=color:#ff79c6>github_token</span>: ${{ secrets.GITHUB_TOKEN }}
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">35</span>          <span style=color:#ff79c6>deploy_key</span>: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">36</span>          <span style=color:#ff79c6>external_repository</span>: username/username.github.io
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">37</span>          <span style=color:#ff79c6>publish_branch</span>: main
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">38</span>          <span style=color:#ff79c6>publish_dir</span>: ./public
+</code></pre></div><p>Fill in your appropriate information for <code>external_repository</code> and <code>hugo-version</code>.</p>
+<p>You can find the hugo version with:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span>hugo version
+</code></pre></div><p>Finally, when you&rsquo;re ready, commit and push this file:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span>git add .
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span>git commit -m <span style=color:#f1fa8c>&#34;adding github action to automatically update website&#34;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span>git push origin main
+</code></pre></div><h3 id=6-verify-website-works>6. Verify Website Works!</h3>
+<p>After pushing this file, you should be able to navigate to https://&lt;username>.github.io or https://&lt;organization>.github.io and see if your site is live!</p>
+<p>If nothing shows up, navigate to your private repo&rsquo;s &ldquo;Actions&rdquo; page to diagnose the issue:</p>
+<p><img src=gh-pages-6a.png alt></p>
+<p>If something went wrong, you&rsquo;ll see that either there are no workflows or that the workflows ended up red.</p>
+<p>If it works, then congratulations! You now have a free site in the form of <code>username.github.io</code> or <code>organization.github.io</code>.</p>
+<h2 id=domain-name-optional-but-recommended>Domain Name (Optional But Recommended)</h2>
+<p>This is optional and only for those who care about having their own domain name. (I mean, why wouldn&rsquo;t you? Domain names can be as cheap as $12/year, so you might as well have it customized.)</p>
+<h3 id=1-buy-a-domain-name>1. Buy a Domain Name</h3>
+<p>Any domain registrar will do. I personally use Google domains. Once you decide on a domain name you like, go ahead and purchase it. Don&rsquo;t worry about purchasing any extra stuff. You own the rights to the domain annually and you&rsquo;ll need to renew every year if you want to keep it.</p>
+<h3 id=2-add-a-cname-record>2. Add a CNAME Record</h3>
+<p>In your domain registrar console, add a CNAME Record to point to <code>username.github.io</code> or <code>organization.github.io</code>. If you&rsquo;re not using a subdomain (the stuff that comes before <code>example.com</code>), you need to use <code>www.example.com</code>. Do NOT have <code>example.com</code> directly point to <code>username.github.io</code> or <code>organization.github.io</code>. For full details, see the <a href=https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages>GitHub Pages documentation on custom domains</a>.</p>
+<p>In my case, I used a subdomain.</p>
+<p><img src=dns-2a.png alt></p>
+<h3 id=3-tell-github-pages-about-your-domain>3. Tell GitHub Pages About Your Domain</h3>
+<p>Go to your public repo, click on &ldquo;Settings&rdquo;, then &ldquo;Pages&rdquo;. You should see the following:</p>
+<p><img src=dns-3a.png alt></p>
+<p>Add in your custom domain and click &ldquo;Save&rdquo;.</p>
+<p>Then, move over to your private repo and modify the following file: <code>.github/workflows/github-pages.yml</code>. Add a line at the very bottom with your custom domain name.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span style=color:#ff79c6>name</span>: github pages
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span style=color:#ff79c6>on</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span>  <span style=color:#ff79c6>push</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span>    <span style=color:#ff79c6>branches</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span>      - main  <span style=color:#6272a4># Set a branch to deploy</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span>  <span style=color:#ff79c6>pull_request</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span style=color:#ff79c6>jobs</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span>  <span style=color:#ff79c6>deploy</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span>    <span style=color:#ff79c6>runs-on</span>: ubuntu-20.04
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span>    <span style=color:#ff79c6>steps</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span>      - <span style=color:#ff79c6>uses</span>: actions/checkout@v2
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span>        <span style=color:#ff79c6>with</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span>          <span style=color:#ff79c6>submodules</span>: <span style=color:#ff79c6>true</span>  <span style=color:#6272a4># Fetch Hugo themes (true OR recursive)</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span>          <span style=color:#ff79c6>fetch-depth</span>: <span style=color:#bd93f9>0</span>    <span style=color:#6272a4># Fetch all history for .GitInfo and .Lastmod</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span>      - <span style=color:#ff79c6>name</span>: Setup Hugo
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19</span>        <span style=color:#ff79c6>uses</span>: peaceiris/actions-hugo@v2
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20</span>        <span style=color:#ff79c6>with</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21</span>          <span style=color:#ff79c6>hugo-version</span>: <span style=color:#f1fa8c>&#39;0.88.0&#39;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22</span>          <span style=color:#ff79c6>extended</span>: <span style=color:#ff79c6>true</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23</span>      
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24</span>      - <span style=color:#ff79c6>name</span>: Clean
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25</span>        <span style=color:#ff79c6>run</span>: rm -rf ./public
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27</span>      - <span style=color:#ff79c6>name</span>: Build
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28</span>        <span style=color:#ff79c6>run</span>: hugo --minify
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30</span>      - <span style=color:#ff79c6>name</span>: Deploy
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31</span>        <span style=color:#ff79c6>uses</span>: peaceiris/actions-gh-pages@v3
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32</span>        <span style=color:#ff79c6>if</span>: ${{ github.ref == &#39;refs/heads/main&#39; }}
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33</span>        <span style=color:#ff79c6>with</span>:
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">34</span>          <span style=color:#ff79c6>github_token</span>: ${{ secrets.GITHUB_TOKEN }}
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">35</span>          <span style=color:#ff79c6>deploy_key</span>: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">36</span>          <span style=color:#ff79c6>external_repository</span>: username/username.github.io
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">37</span>          <span style=color:#ff79c6>publish_branch</span>: main
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">38</span>          <span style=color:#ff79c6>publish_dir</span>: ./public
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">39</span>          <span style=color:#ff79c6>cname</span>: website.com <span style=color:#6272a4># this is the new line!</span>
+</code></pre></div><p>When you&rsquo;re ready, commit and push this file:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span>git add .
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span>git commit -m <span style=color:#f1fa8c>&#34;deploy to custom domain name&#34;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span>git push origin main
+</code></pre></div><p>Enter your domain name into your browser. Right now, it should either be empty, errored, or pointed to your old website if you had one. For now, we&rsquo;ll need to wait. Keep checking back at your domain name until it starts to display the same site as <code>username.github.io</code>. The propagating of the DNS CNAME record can take up to 48 hours, though it should be much shorter. It took about 2 hours for me.</p>
+<h3 id=4-enable-https>4. Enable HTTPS</h3>
+<p>Next, we need to enable HTTPS. Go to your public repo, click on “Settings”, then “Pages”. You should see the following:</p>
+<p><img src=dns-4a.png alt></p>
+<p>Click on &ldquo;Enforce HTTPS&rdquo;.</p>
+<p>Now you&rsquo;ll need to wait for GitHub Pages to issue the HTTPS certificate. I&rsquo;ve heard that this can take up to 12 hours, but I only needed to wait less than 1 hour for this.</p>
+<h1 id=conclusion>Conclusion</h1>
+<p>Congratulations! Now you have a freely hosted website using <code>GitHub Pages</code> along with a static-site generator <code>hugo</code>. Furthermore, you have a nicely automated pipeline setup such that every time you commit a change to your private repo, a GitHub Action will automatically update your website. Super cool!</p>
+</div>
+</article>
+<div id=footer-post-container>
+<div id=footer-post>
+<div id=nav-footer style=display:none>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writings</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</div>
+<div id=toc-footer style=display:none>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#a-_refresher_-on-how-the-browser-serves-websites>A <em>Refresher</em> On How The Browser Serves Websites</a></li>
+<li><a href=#its-technically-one-file-but>It&rsquo;s Technically One File, But&mldr;</a></li>
+<li><a href=#whats-a-dynamic-site>What&rsquo;s a Dynamic Site?</a></li>
+<li><a href=#whats-a-static-site>What&rsquo;s a Static Site?</a></li>
+<li><a href=#dynamic-sites-vs-static-sites>Dynamic Sites vs Static Sites</a></li>
+<li><a href=#static-site-generators>Static-Site Generators!</a></li>
+</ul>
+<ul>
+<li><a href=#hugo>Creating a Skeleton Website With Hugo</a></li>
+<li><a href=#github-pages-setup>GitHub Pages Setup</a>
+<ul>
+<li><a href=#0-some-background>0. Some Background</a></li>
+<li><a href=#1-create-a-github-organization-optional>1. Create a GitHub Organization (Optional)</a></li>
+<li><a href=#2-create-a-private-repository-for-the-hugo-source-files>2. Create a Private Repository for the Hugo Source Files</a></li>
+<li><a href=#3-create-a-public-repository-for-the-generated-static-files>3. Create a Public Repository for the Generated Static Files</a></li>
+<li><a href=#4-give-permissions-for-private-repo-to-commit-to-public-repo>4. Give Permissions for Private Repo to Commit to Public Repo</a></li>
+<li><a href=#github-action>5. Setup GitHub Action</a></li>
+<li><a href=#6-verify-website-works>6. Verify Website Works!</a></li>
+</ul>
+</li>
+<li><a href=#domain-name-optional-but-recommended>Domain Name (Optional But Recommended)</a>
+<ul>
+<li><a href=#1-buy-a-domain-name>1. Buy a Domain Name</a></li>
+<li><a href=#2-add-a-cname-record>2. Add a CNAME Record</a></li>
+<li><a href=#3-tell-github-pages-about-your-domain>3. Tell GitHub Pages About Your Domain</a></li>
+<li><a href=#4-enable-https>4. Enable HTTPS</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div id=share-footer style=display:none>
+<ul>
+<li>
+<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fcode.jerry.blog%2fposts%2fhosting-your-website-for-free-with-github-pages-and-hugo%2f" aria-label=Facebook>
+<i class="fab fa-facebook fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fcode.jerry.blog%2fposts%2fhosting-your-website-for-free-with-github-pages-and-hugo%2f&text=Hosting%20Your%20Website%20For%20Free%20With%20GitHub%20Pages%20and%20Hugo" aria-label=Twitter>
+<i class="fab fa-twitter fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fcode.jerry.blog%2fposts%2fhosting-your-website-for-free-with-github-pages-and-hugo%2f&title=Hosting%20Your%20Website%20For%20Free%20With%20GitHub%20Pages%20and%20Hugo" aria-label=Linkedin>
+<i class="fab fa-linkedin fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fcode.jerry.blog%2fposts%2fhosting-your-website-for-free-with-github-pages-and-hugo%2f&is_video=false&description=Hosting%20Your%20Website%20For%20Free%20With%20GitHub%20Pages%20and%20Hugo" aria-label=Pinterest>
+<i class="fab fa-pinterest fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="mailto:?subject=Hosting%20Your%20Website%20For%20Free%20With%20GitHub%20Pages%20and%20Hugo&body=Check out this article: https%3a%2f%2fcode.jerry.blog%2fposts%2fhosting-your-website-for-free-with-github-pages-and-hugo%2f" aria-label=Email>
+<i class="fas fa-envelope fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fcode.jerry.blog%2fposts%2fhosting-your-website-for-free-with-github-pages-and-hugo%2f&title=Hosting%20Your%20Website%20For%20Free%20With%20GitHub%20Pages%20and%20Hugo" aria-label=Pocket>
+<i class="fab fa-get-pocket fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fcode.jerry.blog%2fposts%2fhosting-your-website-for-free-with-github-pages-and-hugo%2f&title=Hosting%20Your%20Website%20For%20Free%20With%20GitHub%20Pages%20and%20Hugo" aria-label=reddit>
+<i class="fab fa-reddit fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fcode.jerry.blog%2fposts%2fhosting-your-website-for-free-with-github-pages-and-hugo%2f&name=Hosting%20Your%20Website%20For%20Free%20With%20GitHub%20Pages%20and%20Hugo&description=I%20can%26rsquo%3bt%20believe%20I%20didn%26rsquo%3bt%20discover%20this%20secret%20until%20recently.%20Apparently%20it%26rsquo%3bs%20possible%20to%20host%20a%20website%20entirely%20for%20free%20even%20with%20a%20custom%20domain%21%20The%20only%20thing%20you%26rsquo%3bll%20need%20to%20pay%20for%20is%20your%20custom%20domain%20name.%0aFirstly%2c%20I%26rsquo%3bll%20give%20a%20brief%20overview%20of%20how%20websites%20work.%20Then%2c%20I%26rsquo%3bll%20provide%20a%20step-by-step%20tutorial%20on%20how%20to%20achieve%20free%20hosting.%20Skip%20down%20to%20The%20Actual%20Tutorial%20if%20you%20already%20have%20some%20background%20on%20how%20websites%20work." aria-label=Tumblr>
+<i class="fab fa-tumblr fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fcode.jerry.blog%2fposts%2fhosting-your-website-for-free-with-github-pages-and-hugo%2f&t=Hosting%20Your%20Website%20For%20Free%20With%20GitHub%20Pages%20and%20Hugo" aria-label="Hacker News">
+<i class="fab fa-hacker-news fa-lg" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=actions-footer>
+<a id=menu-toggle class=icon href=# onclick="return $('#nav-footer').toggle(),!1" aria-label=Menu>
+<i class="fas fa-bars fa-lg" aria-hidden=true></i> Menu</a>
+<a id=toc-toggle class=icon href=# onclick="return $('#toc-footer').toggle(),!1" aria-label=TOC>
+<i class="fas fa-list fa-lg" aria-hidden=true></i> TOC</a>
+<a id=share-toggle class=icon href=# onclick="return $('#share-footer').toggle(),!1" aria-label=Share>
+<i class="fas fa-share-alt fa-lg" aria-hidden=true></i> share</a>
+<a id=top style=display:none class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
+<i class="fas fa-chevron-up fa-lg" aria-hidden=true></i> Top</a>
+</div>
+</div>
+</div>
+<footer id=footer>
+<div class=footer-left>
+Copyright &copy; 2021 Jerry&rsquo;s Coding Blog
+</div>
+<div class=footer-right>
+<nav>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writings</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+</body>
+<link rel=stylesheet href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+<script src=/js/code-copy.js></script>
+</html>
