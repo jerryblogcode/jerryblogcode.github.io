@@ -215,19 +215,19 @@ Hosting Your Website For Free With GitHub Pages and Hugo
 <span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span style=color:#6272a4>#   gh-pages     (private key)</span>
 </code></pre></div><p>The public key goes to the private repo. The private key goes to the public repo.</p>
 <p><strong><em>Re-read that just in case you didn&rsquo;t get it.</em></strong> It&rsquo;s easy to make a mistake here especially because both steps look almost the same, so be extra careful. I&rsquo;ll provide all screenshots just to make sure you&rsquo;ll get it right.</p>
-<p>Let&rsquo;s start with adding the <strong>public</strong> key to the <strong>private</strong> repo:</p>
+<p>Let&rsquo;s start with adding the <strong>private</strong> key to the <strong>private</strong> repo:</p>
 <ol>
 <li>Navigate to your private repo, and click on &ldquo;Settings&rdquo;. <img src=gh-pages-4a.png alt></li>
 <li>Click on &ldquo;Secrets&rdquo;. <img src=gh-pages-4b.png alt></li>
 <li>Click on &ldquo;New repository secret&rdquo;. <img src=gh-pages-4c.png alt></li>
-<li>Finally, add your <strong>public</strong> key, and be sure to check the box &ldquo;Allow write access&rdquo;. <img src=gh-pages-4d.png alt></li>
+<li>Finally, add your <strong>private</strong> key. <img src=gh-pages-4d.png alt></li>
 </ol>
-<p>Let&rsquo;s then add the <strong>private</strong> key to the <strong>public</strong> repo:</p>
+<p>Let&rsquo;s then add the <strong>public</strong> key to the <strong>public</strong> repo:</p>
 <ol>
 <li>Navigate to your public repo, and click on &ldquo;Settings.&rdquo; <img src=gh-pages-4e.png alt></li>
 <li>Click on &ldquo;Deploy keys&rdquo;. <img src=gh-pages-4f.png alt></li>
 <li>Click on &ldquo;Add deploy key&rdquo;. <img src=gh-pages-4g.png alt></li>
-<li>Finally, add your <strong>private</strong> key. <img src=gh-pages-4h.png alt></li>
+<li>Finally, add your <strong>public</strong> key, and be sure to check the box &ldquo;Allow write access&rdquo;. <img src=gh-pages-4h.png alt></li>
 </ol>
 <p>After the next step, this will allow our private repo to make commits to the public repo. This allows us to keep our pre-processed files private.</p>
 <h3 id=github-action>5. Setup GitHub Action</h3>
