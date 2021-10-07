@@ -78,7 +78,7 @@ Hosting Your Website For Free With GitHub Pages and Hugo
 </div>
 <div class=article-read-time>
 <i class="far fa-clock"></i>
-12 minute read
+13 minute read
 </div>
 <div class=article-category>
 <i class="fas fa-archive"></i>
@@ -137,24 +137,47 @@ Hosting Your Website For Free With GitHub Pages and Hugo
 <p>Now that you have a solid understanding of how websites work, we can start creating one! This tutorial uses <code>macOS</code> in the examples, but the instructions should be similar for other OSes. We will use the tool <code>hugo</code> as our static-site generator and <code>GitHub Pages</code> to host our pages for free.</p>
 <h2 id=hugo>Creating a Skeleton Website With Hugo</h2>
 <p>We will start by installing hugo and quickly setting up a skeleton static website. You can refer <a href=https://gohugo.io/getting-started/quick-start/>here</a> for the official Hugo tutorial. I&rsquo;ve listed the steps below for convenience:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span style=color:#6272a4># install hugo</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span>brew install hugo
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span style=color:#6272a4># create new site</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span>hugo new site mysite
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span style=color:#6272a4># add a theme</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span style=color:#8be9fd;font-style:italic>cd</span> mysite
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span>git init
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span>git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span style=color:#8be9fd;font-style:italic>echo</span> <span style=color:#8be9fd;font-style:italic>theme</span> <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>\&#34;</span>ananke<span style=color:#f1fa8c>\&#34;</span> &gt;&gt; config.toml
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span style=color:#6272a4># add a post</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span>hugo new posts/my-first-post.md
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span><span style=color:#6272a4># start the hugo server</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span>hugo server -D
-</code></pre></div><p>Navigate your browser to <a href=http://localhost:1313>http://localhost:1313</a> and you should see your skeleton site.</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#6272a4># install hugo</span>
+brew install hugo
+
+<span style=color:#6272a4># create new site</span>
+hugo new site mysite
+
+<span style=color:#6272a4># add a theme</span>
+<span style=color:#8be9fd;font-style:italic>cd</span> mysite
+git init
+git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+<span style=color:#8be9fd;font-style:italic>echo</span> <span style=color:#8be9fd;font-style:italic>theme</span> <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>\&#34;</span>ananke<span style=color:#f1fa8c>\&#34;</span> &gt;&gt; config.toml
+
+<span style=color:#6272a4># add a post</span>
+hugo new posts/my-first-post.md
+
+<span style=color:#6272a4># start the hugo server</span>
+hugo server -D
+</code></pre></td></tr></table>
+</div>
+</div><p>Navigate your browser to <a href=http://localhost:1313>http://localhost:1313</a> and you should see your skeleton site.</p>
 <p>If you don&rsquo;t like this theme, simply browse <a href=https://themes.gohugo.io/>the library of themes</a> and find one you like to use. I also encourage you to check out the <a href=https://gohugo.io/documentation/>hugo documentation</a> to make further improvements to your site.</p>
 <h2 id=github-pages-setup>GitHub Pages Setup</h2>
 <p>Now it&rsquo;s time to setup our GitHub Pages. You can always refer to the <a href=https://docs.github.com/en/pages>official GitHub Pages documentation</a>, but it&rsquo;s a bit dense and requires you to put the pieces together. That&rsquo;s why I wrote this guide!</p>
@@ -209,11 +232,21 @@ Hosting Your Website For Free With GitHub Pages and Hugo
 <p>For the &ldquo;Repository name&rdquo; part, you must use the format <code>&lt;username>.github.io</code> or <code>&lt;organization>.github.io</code>. This is critical for GitHub Pages to work! (I&rsquo;ve already done this step, which is why it&rsquo;s showing red for me.)</p>
 <h3 id=4-give-permissions-for-private-repo-to-commit-to-public-repo>4. Give Permissions for Private Repo to Commit to Public Repo</h3>
 <p>Next, we&rsquo;ll need to generate a private-public key-pair that will act as a deploy key. Full instructions <a href=https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-create-ssh-deploy-key>here</a>, but I&rsquo;m reproducing here for convenience:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span>ssh-keygen -t rsa -b <span style=color:#bd93f9>4096</span> -C <span style=color:#f1fa8c>&#34;</span><span style=color:#ff79c6>$(</span>git config user.email<span style=color:#ff79c6>)</span><span style=color:#f1fa8c>&#34;</span> -f gh-pages -N <span style=color:#f1fa8c>&#34;&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span style=color:#6272a4># You will get 2 files:</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span style=color:#6272a4>#   gh-pages.pub (public key)</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span style=color:#6272a4>#   gh-pages     (private key)</span>
-</code></pre></div><p>The public key goes to the private repo. The private key goes to the public repo.</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ssh-keygen -t rsa -b <span style=color:#bd93f9>4096</span> -C <span style=color:#f1fa8c>&#34;</span><span style=color:#ff79c6>$(</span>git config user.email<span style=color:#ff79c6>)</span><span style=color:#f1fa8c>&#34;</span> -f gh-pages -N <span style=color:#f1fa8c>&#34;&#34;</span>
+<span style=color:#6272a4># You will get 2 files:</span>
+<span style=color:#6272a4>#   gh-pages.pub (public key)</span>
+<span style=color:#6272a4>#   gh-pages     (private key)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The public key goes to the private repo. The private key goes to the public repo.</p>
 <p><strong><em>Re-read that just in case you didn&rsquo;t get it.</em></strong> It&rsquo;s easy to make a mistake here especially because both steps look almost the same, so be extra careful. I&rsquo;ll provide all screenshots just to make sure you&rsquo;ll get it right.</p>
 <p>Let&rsquo;s start with adding the <strong>private</strong> key to the <strong>private</strong> repo:</p>
 <ol>
@@ -234,52 +267,112 @@ Hosting Your Website For Free With GitHub Pages and Hugo
 <p>Now it&rsquo;s time to setup some automation. We want it such that every time we commit a change to our private repo, the website will automatically be updated. We can leverage <code>GitHub Actions</code> to help us here.</p>
 <p>To add a new GitHub Action to your private repo, simply add the following file to your private repo:</p>
 <p><code>.github/workflows/github-pages.yml</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span style=color:#ff79c6>name</span>: github pages
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span style=color:#ff79c6>on</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span>  <span style=color:#ff79c6>push</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span>    <span style=color:#ff79c6>branches</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span>      - main  <span style=color:#6272a4># Set a branch to deploy</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span>  <span style=color:#ff79c6>pull_request</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span style=color:#ff79c6>jobs</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span>  <span style=color:#ff79c6>deploy</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span>    <span style=color:#ff79c6>runs-on</span>: ubuntu-20.04
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span>    <span style=color:#ff79c6>steps</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span>      - <span style=color:#ff79c6>uses</span>: actions/checkout@v2
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span>        <span style=color:#ff79c6>with</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span>          <span style=color:#ff79c6>submodules</span>: <span style=color:#ff79c6>true</span>  <span style=color:#6272a4># Fetch Hugo themes (true OR recursive)</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span>          <span style=color:#ff79c6>fetch-depth</span>: <span style=color:#bd93f9>0</span>    <span style=color:#6272a4># Fetch all history for .GitInfo and .Lastmod</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span>      - <span style=color:#ff79c6>name</span>: Setup Hugo
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19</span>        <span style=color:#ff79c6>uses</span>: peaceiris/actions-hugo@v2
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20</span>        <span style=color:#ff79c6>with</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21</span>          <span style=color:#ff79c6>hugo-version</span>: <span style=color:#f1fa8c>&#39;0.88.0&#39;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22</span>          <span style=color:#ff79c6>extended</span>: <span style=color:#ff79c6>true</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23</span>      
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24</span>      - <span style=color:#ff79c6>name</span>: Clean
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25</span>        <span style=color:#ff79c6>run</span>: rm -rf ./public
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27</span>      - <span style=color:#ff79c6>name</span>: Build
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28</span>        <span style=color:#ff79c6>run</span>: hugo --minify
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30</span>      - <span style=color:#ff79c6>name</span>: Deploy
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31</span>        <span style=color:#ff79c6>uses</span>: peaceiris/actions-gh-pages@v3
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32</span>        <span style=color:#ff79c6>if</span>: ${{ github.ref == &#39;refs/heads/main&#39; }}
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33</span>        <span style=color:#ff79c6>with</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">34</span>          <span style=color:#ff79c6>github_token</span>: ${{ secrets.GITHUB_TOKEN }}
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">35</span>          <span style=color:#ff79c6>deploy_key</span>: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">36</span>          <span style=color:#ff79c6>external_repository</span>: username/username.github.io
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">37</span>          <span style=color:#ff79c6>publish_branch</span>: main
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">38</span>          <span style=color:#ff79c6>publish_dir</span>: ./public
-</code></pre></div><p>Fill in your appropriate information for <code>external_repository</code> and <code>hugo-version</code>.</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>name</span>: github pages
+
+<span style=color:#ff79c6>on</span>:
+  <span style=color:#ff79c6>push</span>:
+    <span style=color:#ff79c6>branches</span>:
+      - main  <span style=color:#6272a4># Set a branch to deploy</span>
+  <span style=color:#ff79c6>pull_request</span>:
+
+<span style=color:#ff79c6>jobs</span>:
+  <span style=color:#ff79c6>deploy</span>:
+    <span style=color:#ff79c6>runs-on</span>: ubuntu-20.04
+    <span style=color:#ff79c6>steps</span>:
+      - <span style=color:#ff79c6>uses</span>: actions/checkout@v2
+        <span style=color:#ff79c6>with</span>:
+          <span style=color:#ff79c6>submodules</span>: <span style=color:#ff79c6>true</span>  <span style=color:#6272a4># Fetch Hugo themes (true OR recursive)</span>
+          <span style=color:#ff79c6>fetch-depth</span>: <span style=color:#bd93f9>0</span>    <span style=color:#6272a4># Fetch all history for .GitInfo and .Lastmod</span>
+
+      - <span style=color:#ff79c6>name</span>: Setup Hugo
+        <span style=color:#ff79c6>uses</span>: peaceiris/actions-hugo@v2
+        <span style=color:#ff79c6>with</span>:
+          <span style=color:#ff79c6>hugo-version</span>: <span style=color:#f1fa8c>&#39;0.88.0&#39;</span>
+          <span style=color:#ff79c6>extended</span>: <span style=color:#ff79c6>true</span>
+      
+      - <span style=color:#ff79c6>name</span>: Clean
+        <span style=color:#ff79c6>run</span>: rm -rf ./public
+
+      - <span style=color:#ff79c6>name</span>: Build
+        <span style=color:#ff79c6>run</span>: hugo --minify
+
+      - <span style=color:#ff79c6>name</span>: Deploy
+        <span style=color:#ff79c6>uses</span>: peaceiris/actions-gh-pages@v3
+        <span style=color:#ff79c6>if</span>: ${{ github.ref == &#39;refs/heads/main&#39; }}
+        <span style=color:#ff79c6>with</span>:
+          <span style=color:#ff79c6>github_token</span>: ${{ secrets.GITHUB_TOKEN }}
+          <span style=color:#ff79c6>deploy_key</span>: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          <span style=color:#ff79c6>external_repository</span>: username/username.github.io
+          <span style=color:#ff79c6>publish_branch</span>: main
+          <span style=color:#ff79c6>publish_dir</span>: ./public
+</code></pre></td></tr></table>
+</div>
+</div><p>Fill in your appropriate information for <code>external_repository</code> and <code>hugo-version</code>.</p>
 <p>You can find the hugo version with:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span>hugo version
-</code></pre></div><p>Finally, when you&rsquo;re ready, commit and push this file:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span>git add .
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span>git commit -m <span style=color:#f1fa8c>&#34;adding github action to automatically update website&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span>git push origin main
-</code></pre></div><h3 id=6-verify-website-works>6. Verify Website Works!</h3>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>hugo version
+</code></pre></td></tr></table>
+</div>
+</div><p>Finally, when you&rsquo;re ready, commit and push this file:</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>git add .
+git commit -m <span style=color:#f1fa8c>&#34;adding github action to automatically update website&#34;</span>
+git push origin main
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=6-verify-website-works>6. Verify Website Works!</h3>
 <p>After pushing this file, you should be able to navigate to https://&lt;username>.github.io or https://&lt;organization>.github.io and see if your site is live!</p>
 <p>If nothing shows up, navigate to your private repo&rsquo;s &ldquo;Actions&rdquo; page to diagnose the issue:</p>
 <p><img src=gh-pages-6a.png alt></p>
@@ -298,50 +391,104 @@ Hosting Your Website For Free With GitHub Pages and Hugo
 <p><img src=dns-3a.png alt></p>
 <p>Add in your custom domain and click &ldquo;Save&rdquo;.</p>
 <p>Then, move over to your private repo and modify the following file: <code>.github/workflows/github-pages.yml</code>. Add a line at the very bottom with your custom domain name.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span style=color:#ff79c6>name</span>: github pages
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span style=color:#ff79c6>on</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span>  <span style=color:#ff79c6>push</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span>    <span style=color:#ff79c6>branches</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span>      - main  <span style=color:#6272a4># Set a branch to deploy</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span>  <span style=color:#ff79c6>pull_request</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span style=color:#ff79c6>jobs</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span>  <span style=color:#ff79c6>deploy</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span>    <span style=color:#ff79c6>runs-on</span>: ubuntu-20.04
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span>    <span style=color:#ff79c6>steps</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span>      - <span style=color:#ff79c6>uses</span>: actions/checkout@v2
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span>        <span style=color:#ff79c6>with</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span>          <span style=color:#ff79c6>submodules</span>: <span style=color:#ff79c6>true</span>  <span style=color:#6272a4># Fetch Hugo themes (true OR recursive)</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span>          <span style=color:#ff79c6>fetch-depth</span>: <span style=color:#bd93f9>0</span>    <span style=color:#6272a4># Fetch all history for .GitInfo and .Lastmod</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span>      - <span style=color:#ff79c6>name</span>: Setup Hugo
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19</span>        <span style=color:#ff79c6>uses</span>: peaceiris/actions-hugo@v2
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20</span>        <span style=color:#ff79c6>with</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21</span>          <span style=color:#ff79c6>hugo-version</span>: <span style=color:#f1fa8c>&#39;0.88.0&#39;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22</span>          <span style=color:#ff79c6>extended</span>: <span style=color:#ff79c6>true</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23</span>      
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24</span>      - <span style=color:#ff79c6>name</span>: Clean
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25</span>        <span style=color:#ff79c6>run</span>: rm -rf ./public
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27</span>      - <span style=color:#ff79c6>name</span>: Build
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28</span>        <span style=color:#ff79c6>run</span>: hugo --minify
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30</span>      - <span style=color:#ff79c6>name</span>: Deploy
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31</span>        <span style=color:#ff79c6>uses</span>: peaceiris/actions-gh-pages@v3
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32</span>        <span style=color:#ff79c6>if</span>: ${{ github.ref == &#39;refs/heads/main&#39; }}
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33</span>        <span style=color:#ff79c6>with</span>:
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">34</span>          <span style=color:#ff79c6>github_token</span>: ${{ secrets.GITHUB_TOKEN }}
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">35</span>          <span style=color:#ff79c6>deploy_key</span>: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">36</span>          <span style=color:#ff79c6>external_repository</span>: username/username.github.io
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">37</span>          <span style=color:#ff79c6>publish_branch</span>: main
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">38</span>          <span style=color:#ff79c6>publish_dir</span>: ./public
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">39</span>          <span style=color:#ff79c6>cname</span>: website.com <span style=color:#6272a4># this is the new line!</span>
-</code></pre></div><p>When you&rsquo;re ready, commit and push this file:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span>git add .
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span>git commit -m <span style=color:#f1fa8c>&#34;deploy to custom domain name&#34;</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span>git push origin main
-</code></pre></div><p>Enter your domain name into your browser. Right now, it should either be empty, errored, or pointed to your old website if you had one. For now, we&rsquo;ll need to wait. Keep checking back at your domain name until it starts to display the same site as <code>username.github.io</code>. The propagating of the DNS CNAME record can take up to 48 hours, though it should be much shorter. It took about 2 hours for me.</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>name</span>: github pages
+
+<span style=color:#ff79c6>on</span>:
+  <span style=color:#ff79c6>push</span>:
+    <span style=color:#ff79c6>branches</span>:
+      - main  <span style=color:#6272a4># Set a branch to deploy</span>
+  <span style=color:#ff79c6>pull_request</span>:
+
+<span style=color:#ff79c6>jobs</span>:
+  <span style=color:#ff79c6>deploy</span>:
+    <span style=color:#ff79c6>runs-on</span>: ubuntu-20.04
+    <span style=color:#ff79c6>steps</span>:
+      - <span style=color:#ff79c6>uses</span>: actions/checkout@v2
+        <span style=color:#ff79c6>with</span>:
+          <span style=color:#ff79c6>submodules</span>: <span style=color:#ff79c6>true</span>  <span style=color:#6272a4># Fetch Hugo themes (true OR recursive)</span>
+          <span style=color:#ff79c6>fetch-depth</span>: <span style=color:#bd93f9>0</span>    <span style=color:#6272a4># Fetch all history for .GitInfo and .Lastmod</span>
+
+      - <span style=color:#ff79c6>name</span>: Setup Hugo
+        <span style=color:#ff79c6>uses</span>: peaceiris/actions-hugo@v2
+        <span style=color:#ff79c6>with</span>:
+          <span style=color:#ff79c6>hugo-version</span>: <span style=color:#f1fa8c>&#39;0.88.0&#39;</span>
+          <span style=color:#ff79c6>extended</span>: <span style=color:#ff79c6>true</span>
+      
+      - <span style=color:#ff79c6>name</span>: Clean
+        <span style=color:#ff79c6>run</span>: rm -rf ./public
+
+      - <span style=color:#ff79c6>name</span>: Build
+        <span style=color:#ff79c6>run</span>: hugo --minify
+
+      - <span style=color:#ff79c6>name</span>: Deploy
+        <span style=color:#ff79c6>uses</span>: peaceiris/actions-gh-pages@v3
+        <span style=color:#ff79c6>if</span>: ${{ github.ref == &#39;refs/heads/main&#39; }}
+        <span style=color:#ff79c6>with</span>:
+          <span style=color:#ff79c6>github_token</span>: ${{ secrets.GITHUB_TOKEN }}
+          <span style=color:#ff79c6>deploy_key</span>: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          <span style=color:#ff79c6>external_repository</span>: username/username.github.io
+          <span style=color:#ff79c6>publish_branch</span>: main
+          <span style=color:#ff79c6>publish_dir</span>: ./public
+          <span style=color:#ff79c6>cname</span>: website.com <span style=color:#6272a4># this is the new line!</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>When you&rsquo;re ready, commit and push this file:</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>git add .
+git commit -m <span style=color:#f1fa8c>&#34;deploy to custom domain name&#34;</span>
+git push origin main
+</code></pre></td></tr></table>
+</div>
+</div><p>Enter your domain name into your browser. Right now, it should either be empty, errored, or pointed to your old website if you had one. For now, we&rsquo;ll need to wait. Keep checking back at your domain name until it starts to display the same site as <code>username.github.io</code>. The propagating of the DNS CNAME record can take up to 48 hours, though it should be much shorter. It took about 2 hours for me.</p>
 <h3 id=4-enable-https>4. Enable HTTPS</h3>
 <p>Next, we need to enable HTTPS. Go to your public repo, click on “Settings”, then “Pages”. You should see the following:</p>
 <p><img src=dns-4a.png alt></p>
